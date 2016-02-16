@@ -2,6 +2,8 @@
 import sys
 import os.path
 
+os.environ["LIBOVERLAY_SCROLLBAR"] = "0"
+
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
 from markstimetracker.mainwindow import MarksTimeTracker
