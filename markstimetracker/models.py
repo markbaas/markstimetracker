@@ -4,7 +4,7 @@ from collections import defaultdict
 
 from dateutil.relativedelta import relativedelta
 
-from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy import Column, ForeignKey, Integer, String, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.orm import relationship
@@ -30,6 +30,7 @@ class Task(Base):
     task_id = Column(Integer)
     parent = Column(Integer)
     name = Column(String)
+    active = Column(Boolean)
 
     def __new__(cls, *args, **kwargs):
         for key, args in PERIODS.items():

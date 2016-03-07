@@ -113,7 +113,7 @@ class MarksTimeTracker(QMainWindow, Ui_MainWindow):
         self.editTaskListComboBox.clear()
         self.tasksComboBox.addItem('')
         self.tasksComboBox.lineEdit().setPlaceholderText("What are you going to do?")
-        for task in self.db.query(Task).all():
+        for task in self.db.query(Task).filter(Task.active == True):
             self.tasksComboBox.addItem(task.description)
             self.editTaskListComboBox.addItem(task.description)
 

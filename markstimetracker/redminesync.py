@@ -86,16 +86,23 @@ class RedmineSync:
                 except ResourceAttrError:
                     parent_id = 0
 
-                obj = Task(name=issue.subject, task_id=issue.id, parent=parent_id)
+                obj = Task(name=issue.subject, task_id=issue.id, parent=parent_id, active=True)
                 self.session.add(obj)
                 logging.warning('Added task {}'.format(issue.subject))
+            elif issue.subject != task.name:
+                task.name = issue.subject
+                self.session.add(task)
 
         # Check consistency
+        issue_ids = [i.id for i in issues]
         for task in self.session.query(Task).all():
             if task.parent:
                 parent = self.session.query(Task).filter(Task.task_id == task.parent).first()
                 if not parent:
                     task.parent = 0
+                    self.session.add(task)
+            if task.task_id not in issue_ids:
+                task.active = 0
                 self.session.add(task)
 
         self.session.commit()
