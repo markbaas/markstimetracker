@@ -68,7 +68,7 @@ class RedmineSync:
             if not time_entries:
                 continue
 
-            logging.warning('#{} {}'.format(task.task_id, task.name))
+            # logging.warning('#{} {}'.format(task.task_id, task.name))
 
             for date, spent_time in time_entries:
                 if spent_time:
@@ -86,7 +86,7 @@ class RedmineSync:
                 except ResourceAttrError:
                     parent_id = 0
 
-                obj = Task(name=issue.subject, task_id=issue.id, parent=parent_id, active=True)
+                obj = Task(name=issue.subject, task_id=issue.id, parent=parent_id, active=True, redmine=True)
                 self.session.add(obj)
                 logging.warning('Added task {}'.format(issue.subject))
             elif issue.subject != task.name:
@@ -95,7 +95,7 @@ class RedmineSync:
 
         # Check consistency
         issue_ids = [i.id for i in issues]
-        for task in self.session.query(Task).all():
+        for task in self.session.query(Task).filter(Task.redmine is True):
             if task.parent:
                 parent = self.session.query(Task).filter(Task.task_id == task.parent).first()
                 if not parent:

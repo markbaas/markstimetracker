@@ -31,6 +31,7 @@ class Task(Base):
     parent = Column(Integer)
     name = Column(String)
     active = Column(Boolean)
+    redmine = Column(Boolean)
 
     def __new__(cls, *args, **kwargs):
         for key, args in PERIODS.items():

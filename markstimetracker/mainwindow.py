@@ -113,8 +113,9 @@ class MarksTimeTracker(QMainWindow, Ui_MainWindow):
         self.editTaskListComboBox.clear()
         self.tasksComboBox.addItem('')
         self.tasksComboBox.lineEdit().setPlaceholderText("What are you going to do?")
-        for task in self.db.query(Task).filter(Task.active == True):
-            self.tasksComboBox.addItem(task.description)
+        for task in self.db.query(Task).all():
+            if task.active:
+                self.tasksComboBox.addItem(task.description)
             self.editTaskListComboBox.addItem(task.description)
 
     def updateTimeSpent(self):
@@ -358,6 +359,7 @@ class MarksTimeTracker(QMainWindow, Ui_MainWindow):
         def updateTaskWidgets():
             self.updateTaskList()
             self.updateTasksComboBox()
+            self.checkForRunningTask()
 
         thread.finished.connect(updateTaskWidgets)
         thread.start()
