@@ -11,5 +11,5 @@ setup(name='markstimetracker',
       packages=['markstimetracker'],
       scripts=['bin/markstimetracker'],
       data_files=[('share/applications', ['data/markstimetracker.desktop']),
-                  ('share/icons/hicolor/128x128/apps', ['data/markstimetracker.png'])]
+                  ('share/icons/hicolor/scalable/apps', ['data/cat.svg'])]
       )

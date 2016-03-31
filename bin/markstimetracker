@@ -6,7 +6,9 @@ os.environ["LIBOVERLAY_SCROLLBAR"] = "0"
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 
-print(sys.path)
+
+if os.environ["XDG_CURRENT_DESKTOP"] == "Pantheon":
+    os.environ["XDG_CURRENT_DESKTOP"] = "gnome"
 
 from markstimetracker.mainwindow import MarksTimeTracker
 from PyQt5.QtWidgets import QApplication

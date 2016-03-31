@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>400</height>
+    <height>399</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="resources.qrc">
-    <normaloff>:/clock.svg</normaloff>:/clock.svg</iconset>
+    <normaloff>:/cat.png</normaloff>:/cat.png</iconset>
   </property>
   <property name="iconSize">
    <size>
@@ -48,8 +48,8 @@
       <property name="movable">
        <bool>false</bool>
       </property>
-      <property name="tabBarAutoHide">
-       <bool>false</bool>
+      <property name="tabBarAutoHide" stdset="0">
+       <bool>true</bool>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -119,8 +119,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>481</width>
-             <height>218</height>
+             <width>762</width>
+             <height>233</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -155,13 +155,12 @@
              <string/>
             </property>
             <property name="icon">
-             <iconset theme="configure">
-              <normaloff>.</normaloff>.</iconset>
+             <iconset theme="document-properties"/>
             </property>
             <property name="iconSize">
              <size>
-              <width>24</width>
-              <height>24</height>
+              <width>22</width>
+              <height>22</height>
              </size>
             </property>
             <property name="flat">
@@ -179,7 +178,14 @@
             </property>
             <property name="icon">
              <iconset theme="list-add">
-              <normaloff>.</normaloff>.</iconset>
+              <normaloff/>
+             </iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>22</width>
+              <height>22</height>
+             </size>
             </property>
             <property name="flat">
              <bool>true</bool>
@@ -199,12 +205,13 @@
             </property>
             <property name="icon">
              <iconset theme="view-refresh">
-              <normaloff>.</normaloff>.</iconset>
+              <normaloff/>
+             </iconset>
             </property>
             <property name="iconSize">
              <size>
-              <width>24</width>
-              <height>24</height>
+              <width>22</width>
+              <height>22</height>
              </size>
             </property>
             <property name="flat">

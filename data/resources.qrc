@@ -1,5 +1,7 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource>
     <file>clock.svg</file>
+    <file>go-next.png</file>
+    <file>cat.png</file>
 </qresource>
 </RCC>
