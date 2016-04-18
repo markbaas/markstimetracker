@@ -68,8 +68,6 @@ class RedmineSync:
             if not time_entries:
                 continue
 
-            # logging.warning('#{} {}'.format(task.task_id, task.name))
-
             for date, spent_time in time_entries:
                 if spent_time:
                     self._push_time_entry(spent_time, task.task_id, date)

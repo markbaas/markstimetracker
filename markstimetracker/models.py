@@ -13,13 +13,13 @@ Base = declarative_base()
 
 today = datetime.date.today()
 PERIODS = {'month': (today.replace(day=1),
-                     today.replace(day=1) + relativedelta(months=1) - relativedelta(days=1)),
+                     today.replace(day=1) + relativedelta(months=1)),
            'last_month': (today.replace(day=1) - relativedelta(months=1),
-                          today.replace(day=1, month=today.month) - relativedelta(days=1)),
+                          today.replace(day=1, month=today.month)),
            'week': (today - relativedelta(days=today.weekday()),
-                    today + relativedelta(days=6 - today.weekday())),
+                    today + relativedelta(days=7 - today.weekday())),
            'last_and_current_week': (today - relativedelta(days=today.weekday() + 7),
-                                     today + relativedelta(days=6 - today.weekday())),
+                                     today + relativedelta(days=7 - today.weekday())),
            }
 
 
@@ -38,7 +38,7 @@ class Task(Base):
             rel = relationship(
                 'Event',
                 primaryjoin='and_(Task.task_id==Event.task_id, '
-                            'Event.start >= "{}", Event.start <= "{}")'.format(*args),
+                            'Event.start >= "{}", Event.start < "{}")'.format(*args),
                 order_by='Event.start'
             )
             if not hasattr(cls, 'events_' + key):
