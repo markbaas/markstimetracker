@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 
 from distutils.core import setup
+import sys
+
+if not sys.version_info[0] >= 3:
+    sys.exit("Sorry, only Python 3 is supported")
+
 
 setup(name='markstimetracker',
       version='1.0',
